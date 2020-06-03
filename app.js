@@ -319,7 +319,7 @@ function addPalette(e) {
 
   let paletteId = Math.floor(Math.random() * 100);
   fetch("https://colors-server.herokuapp.com/", {
-    method: "post",
+    method: "get",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   })
@@ -361,8 +361,7 @@ function updatePalette(id, colors, name) {
 }
 
 function deletePalette(id) {
-  // https://colors-server.herokuapp.com/delete
-  fetch("localhost:3001/delete", {
+  fetch("https://colors-server.herokuapp.com/delete", {
     method: "delete",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
