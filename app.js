@@ -151,6 +151,8 @@ function updateTextUI(index) {
   for (icon of icons) {
     checkTextContrast(color, icon);
   }
+
+  initialColors[index] = color.hex();
 }
 
 function resetInputs() {
