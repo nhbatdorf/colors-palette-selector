@@ -237,10 +237,7 @@ function getDatabase() {
     );
   }
 
-  fetch("https://colors-server.herokuapp.com/", {
-    method: "get",
-    headers: { "Content-Type": "application/json" },
-  })
+  fetch("https://colors-server.herokuapp.com/")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((dbPalette) => {
@@ -321,7 +318,11 @@ function addPalette(e) {
   });
 
   let paletteId = Math.floor(Math.random() * 100);
-  fetch("https://colors-server.herokuapp.com/")
+  fetch("https://colors-server.herokuapp.com/", {
+    method: "post",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  })
     .then((response) => response.json())
     .then((data) => {
       const ids = data.map((val) => {
@@ -360,7 +361,8 @@ function updatePalette(id, colors, name) {
 }
 
 function deletePalette(id) {
-  fetch("https://colors-server.herokuapp.com/delete", {
+  // https://colors-server.herokuapp.com/delete
+  fetch("localhost:3001/delete", {
     method: "delete",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
