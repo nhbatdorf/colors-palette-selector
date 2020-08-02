@@ -373,5 +373,4 @@ function deletePalette(id) {
   toggleLibrary();
 }
 
-// getDatabase();
 randomColors();
